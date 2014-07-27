@@ -1,12 +1,13 @@
 <div id="board">
   <% results.each_with_index do |result, index| %>
-    <% num_per_list = 3 %>
+    <% num_per_list = 4 %>
     <% rem = index % num_per_list %>
     <% if rem == 0 %><div class="list"><% end %>
       <div class="portlet">
         <div class="portlet-content">
-          <%= image_tag result['thumbnails']['default']['url'], alt: result['title'], align: 'center' %>
-          <p><%= result['title'] %></p>
+          <%= image_tag result.thumbnail_link, alt: result.content, align: 'center' %>
+          <p><%= result.content %></p>
+          <p><%= link_to 'Visit Link', result.remote_link, target: :_blank %></p>
         </div>
       </div>
     <% if rem == num_per_list-1 %></div><% end %>

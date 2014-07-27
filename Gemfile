@@ -29,6 +29,7 @@ gem 'spring',        group: :development
 
 gem 'omniauth-trello', '~> 0.0.4'
 gem 'google-api-client', '~> 0.7.1', require: 'google/api_client'
+gem 'vacuum', '~> 1.1.1'
 
 group :development, :test do
   gem 'dotenv-rails'

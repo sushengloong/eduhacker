@@ -9,7 +9,7 @@ class YoutubeClient
     @youtube = @client.discovered_api API_SERVICE_NAME, API_VERSION
   end
 
-  def search_video q
+  def search q
     params = {
        q: q,
        part: 'snippet',
@@ -17,6 +17,10 @@ class YoutubeClient
        maxResults: 10
     }
     api_result = @client.execute api_method: @youtube.search.list, parameters: params
-    JSON.parse api_result.response.body
+    JSON.parse(api_result.response.body)['items'].map do |item|
+      Result.new item['snippet']['title'],
+        "http://www.youtube.com/watch?v=#{item["id"]["videoId"]}",
+        item['snippet']['thumbnails']['default']['url']
+    end
   end
 end
