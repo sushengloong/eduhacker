@@ -1,7 +1,8 @@
 class TrelloController < ApplicationController
   @@api_clients = [
     YoutubeClient.new,
-    AmazonClient.new
+    AmazonClient.new,
+    RedditClient.new
   ]
 
   def index
@@ -9,6 +10,8 @@ class TrelloController < ApplicationController
 
   def search
     @results = search_and_cache params[:q]
+    # try to show 5 lists for now
+    @num_per_list = @results.length / 5
     respond_to do |format|
       format.js
     end

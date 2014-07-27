@@ -1,7 +1,6 @@
 <div id="board">
   <% results.each_with_index do |result, index| %>
-    <% num_per_list = 4 %>
-    <% rem = index % num_per_list %>
+    <% rem = index % @num_per_list %>
     <% if rem == 0 %><div class="list"><% end %>
       <div class="portlet">
         <div class="portlet-content">
@@ -10,7 +9,7 @@
           <p><%= link_to 'Visit Link', result.remote_link, target: :_blank %></p>
         </div>
       </div>
-    <% if rem == num_per_list-1 %></div><% end %>
+    <% if rem == @num_per_list-1 %></div><% end %>
   <% end %>
 </div>
 <script>
