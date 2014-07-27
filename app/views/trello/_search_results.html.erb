@@ -1,0 +1,17 @@
+<div id="board">
+  <% results.each_with_index do |result, index| %>
+    <% num_per_list = 3 %>
+    <% rem = index % num_per_list %>
+    <% if rem == 0 %><div class="list"><% end %>
+      <div class="portlet">
+        <div class="portlet-content">
+          <%= image_tag result['thumbnails']['default']['url'], alt: result['title'], align: 'center' %>
+          <p><%= result['title'] %></p>
+        </div>
+      </div>
+    <% if rem == num_per_list-1 %></div><% end %>
+  <% end %>
+</div>
+<script>
+  $(document).trigger('portlets:load');
+</script>

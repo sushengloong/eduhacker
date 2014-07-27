@@ -1,0 +1,6 @@
+<%= form_tag search_trello_index_path, method: :get, remote: true do %>
+  <%= text_field_tag :q, nil, size: 100, maxlength: 100, placeholder: 'Enter topics here' %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+<div id="search_results_ctn"></div>
