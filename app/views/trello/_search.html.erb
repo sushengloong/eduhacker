@@ -1,6 +1,7 @@
-<%= form_tag search_trello_index_path, method: :get, remote: true do %>
+<%= form_tag search_trello_index_path, id: 'search_form', method: :get, remote: true do %>
   <%= text_field_tag :q, nil, size: 100, maxlength: 100, placeholder: 'Enter topics here' %>
   <%= submit_tag 'Search' %>
 <% end %>
 
+<%= image_tag 'loading.gif', style: 'display: none;', id: 'loading_icon' %>
 <div id="search_results_ctn"></div>
