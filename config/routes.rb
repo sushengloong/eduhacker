@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'trello#index'
+
   resources :trello, only: [:index] do
     collection do
       get 'search'
