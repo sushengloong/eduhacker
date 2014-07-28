@@ -1,10 +1,4 @@
 class TrelloController < ApplicationController
-  @@api_clients = [
-    YoutubeClient.new,
-    AmazonClient.new,
-    RedditClient.new
-  ]
-
   def index
   end
 
@@ -19,9 +13,17 @@ class TrelloController < ApplicationController
 
   private
 
+  def api_clients
+    [
+      YoutubeClient.new,
+      AmazonClient.new,
+      RedditClient.new
+    ]
+  end
+
   def search_and_cache q
     Rails.cache.fetch("search_and_cache/#{q}") do
-      @@api_clients.map { |client| client.search q }.flatten
+      api_clients.map { |client| client.search q }.flatten
     end
   end
 end

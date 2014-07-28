@@ -5,6 +5,4 @@
   <%= link_to 'Sign in with Trello', '/auth/trello' %>
 <% end %>
 
-<% if current_user %>
-  <%= render partial: 'search' %>
-<% end %>
+<%= render partial: 'search' %>

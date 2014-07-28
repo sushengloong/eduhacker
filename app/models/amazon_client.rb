@@ -21,7 +21,7 @@ class AmazonClient
     }
     resp = @client.item_search(query: params).to_h
 
-    resp["ItemSearchResponse"]["Items"]["Item"].map do |item|
+    Array.wrap(resp["ItemSearchResponse"]["Items"]["Item"]).map do |item|
       Result.new item["ItemAttributes"]["Title"],
         item["DetailPageURL"] ,
         item["SmallImage"]["URL"]
